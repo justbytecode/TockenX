@@ -30,7 +30,7 @@ export const authConfig = {
             }
             return newSession!;
         },
-        async jwt({ token, account, profile }: any) {
+        async jwt({ token, account }: any) {
             const user = await db.user.findFirst({
                 where: {
                     sub: account?.providerAccountId ?? ""
@@ -41,7 +41,7 @@ export const authConfig = {
             }
             return token
         },
-        async signIn({ user, account, profile, email, credentials }: any) {
+        async signIn({ user, account, profile }: any) {
             if (account?.provider === "google") {
                 const email = user.email;
                 if (!email) {

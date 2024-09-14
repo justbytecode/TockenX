@@ -5,6 +5,7 @@ import { TokenWithbalance } from "@/components/hooks/route";
 import { PrimaryButton } from "./Button";
 import axios from "axios";
 
+//  @typescript-eslint/no-unused-vars
 export function Swap({ publicKey, tokenBalances }: {
     publicKey: string;
     tokenBalances: {
@@ -63,7 +64,7 @@ export function Swap({ publicKey, tokenBalances }: {
         
          <div className="flex justify-center">
             <div onClick={() => {
-                let baseAssetTemp = baseAsset;
+                const baseAssetTemp = baseAsset;
                 setBaseAsset(quoteAsset);
                 setQuoteAsset(baseAssetTemp);
             }} className="cursor-pointer rounded-full w-10 h-10 border absolute mt-[-20px] bg-white flex justify-center pt-2">

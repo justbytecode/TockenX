@@ -75,7 +75,7 @@ function Assets({publicKey, tokenBalances, loading}: {
 
     useEffect(() => {
         if (copied) {
-            let timeout = setTimeout(() => {
+            const timeout = setTimeout(() => {
                 setCopied(false)
             }, 3000)
             return () => {
