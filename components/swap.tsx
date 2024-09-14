@@ -6,7 +6,7 @@ import { PrimaryButton } from "./Button";
 import axios from "axios";
 
 //  @typescript-eslint/no-unused-vars
-export function Swap({ publicKey, tokenBalances }: {
+export function Swap({  tokenBalances }: {
     publicKey: string;
     tokenBalances: {
         totalBalance: number,
