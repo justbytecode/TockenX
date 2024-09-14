@@ -26,6 +26,7 @@ export const authConfig = {
             const newSession: session = session as session;
             if (newSession.user && token.uid) {
                 // @ts-expect-error
+                //@typescript-eslint/ban-ts-comment
               newSession.user.uid = token.uid ?? "";
             }
             return newSession!;
@@ -67,6 +68,7 @@ export const authConfig = {
                         username: email,
                         name: profile?.name,
                           // @ts-expect-error
+                          // @typescript-eslint/ban-ts-comment
                         profilePicture: profile?.picture,
                         provider: "Google",
                         sub: account.providerAccountId,
