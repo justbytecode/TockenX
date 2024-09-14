@@ -25,7 +25,7 @@ export const authConfig = {
         session: ({ session, token }: any): session => {
             const newSession: session = session as session;
             if (newSession.user && token.uid) {
-              // @ts-ignore
+                // @ts-expect-error
               newSession.user.uid = token.uid ?? "";
             }
             return newSession!;
@@ -66,7 +66,7 @@ export const authConfig = {
                     data: {
                         username: email,
                         name: profile?.name,
-                        //@ts-ignore
+                          // @ts-expect-error
                         profilePicture: profile?.picture,
                         provider: "Google",
                         sub: account.providerAccountId,
