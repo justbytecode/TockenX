@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { PrimaryButton, SecondaryButton } from "./Button";
-import { BackgroundLines } from "./ui/background-lines";
+
 
 const Hero = () => {
   const [animate, setAnimate] = useState(false);
@@ -17,12 +17,14 @@ const Hero = () => {
 
 
   return (
-    <BackgroundLines>
+    
     <div>
         
       <div className="text-5xl text-white text-center font-bold ">
         <div>
+         
           <span>
+            
             <span
               className={`inline-block text-6xl ${
                 animate ? "animate-indian-flag" : ""
@@ -41,9 +43,10 @@ const Hero = () => {
             </span>
             Crypto Currency of{" "}
           </span>
-
           <span className="text-purple-400 ">Today</span>
+          
         </div>
+        
       </div>
       <p className="font-light text-white text-center justify-center mt-4 text-2xl ">
         Create a Easy Implementable wallet from India..
@@ -51,6 +54,7 @@ const Hero = () => {
       <p className="mb-2 text-white font-medium text-center justify-center text-xl ">
         Convert Your INR into Crypto
       </p>
+
 
       <div className="pt-8 flex justify-center">
         {session.data?.user ? (
@@ -74,7 +78,7 @@ const Hero = () => {
       </div>
      
     </div>
-    </BackgroundLines>
+    
   );
 };
 

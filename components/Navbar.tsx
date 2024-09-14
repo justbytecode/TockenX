@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import React from 'react'
 import { PrimaryButton } from './Button';
 
 const Navbar = () => {

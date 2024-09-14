@@ -1,36 +1,38 @@
-"use client"
-import db from "@/app/db";
 import { getServerSession } from "next-auth";
-import { authConfig } from "@/app/lib/auth";
 import { ProfileCard } from "@/components/ProfileCard";
+import db from "@/app/db";
+import { authConfig } from "@/app/lib/auth";
 
-// Server-side function to get the user's Solana wallet
 async function getUserWallet() {
-  const session = await getServerSession(authConfig);
-  const userWallet = await db.solWallet.findFirst({
-    where: {
-      userId: session?.user?.uid,
-    },
-    select: {
-      publicKey: true,
-    },
-  });
+    const session = await getServerSession(authConfig);
 
-  if (!userWallet) {
-    return {
-      error: "No Solana wallet found associated with the user",
-    };
-  }
+    const userWallet = await db.solWallet.findFirst({
+        where: {
+            userId: session?.user?.uid
+        },
+        select: {
+            publicKey: true
+        }
+    })
 
-  return { error: null, userWallet };
+    if (!userWallet) {
+        return {
+            error: "No solana wallet found associated to the user"
+        }
+    }
+    
+    return {error: null, userWallet};
 }
 
-export default async function WalletPage() {
-  const userWallet = await getUserWallet();
+export default async function Dashboard() {
+    const userWallet = await getUserWallet();
 
-  if (userWallet.error || !userWallet.userWallet?.publicKey) {
-    return <>No Solana Wallet found..</>;
-  }
+    if (userWallet.error || !userWallet.userWallet?.publicKey) {
+        return <>No solana wallet found</>
+    }
 
-  return <ProfileCard publicKey={userWallet.userWallet?.publicKey} />;
+    return <div>
+
+        <ProfileCard publicKey={userWallet.userWallet?.publicKey} />
+    </div>
 }

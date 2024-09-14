@@ -2,13 +2,11 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import { PrimaryButton, TabButton } from "./Button";
 import { useEffect, useState } from "react";
 import { TokenWithbalance, useTokens } from "@/components/hooks/route";
 import { TokenList } from "./TokenList";
-import { Swap } from "./swap";
-import { PrimaryButton, TabButton } from "./Button";
-
+import { Swap } from "@/components/swap";
 
 type Tab = "tokens" | "send" | "add_funds" | "swap" | "withdraw"
 const tabs: {id: Tab; name: string}[] = [
@@ -39,8 +37,8 @@ export const ProfileCard = ({publicKey}: {
         return null
     }
 
-    return <div className="pt-8 flex justify-center">
-        <div className="max-w-4xl bg-gray-100 rounded shadow w-full">
+    return <div className="p-8 flex justify-center">
+        <div className="max-w-4xl bg-white rounded shadow w-full">
             <Greeting 
                 image={session.data?.user?.image ?? ""} 
                 name={session.data?.user?.name ?? ""} 
