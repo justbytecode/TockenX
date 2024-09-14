@@ -25,8 +25,8 @@ export const authConfig = {
         session: ({ session, token }: any): session => {
             const newSession: session = session as session;
             if (newSession.user && token.uid) {
-                // @ts-expect-error
-                //@typescript-eslint/ban-ts-comment
+                // @ts-expect-error: TypeScript doesn't recognize uid on the session user object
+              
               newSession.user.uid = token.uid ?? "";
             }
             return newSession!;
@@ -67,8 +67,7 @@ export const authConfig = {
                     data: {
                         username: email,
                         name: profile?.name,
-                          // @ts-expect-error
-                          // @typescript-eslint/ban-ts-comment
+                          // @ts-expect-error: TypeScript doesn't recognize profilePicture on the profile object
                         profilePicture: profile?.picture,
                         provider: "Google",
                         sub: account.providerAccountId,
